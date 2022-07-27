@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class AlphaInterceptor implements HandlerInterceptor {
 
+    //拦截器可以说相当于是个过滤器：就是把不想要的或不想显示的内容给过滤掉。
+    // 拦截器可以抽象出一部分代码可以用来完善原来的方法。同时可以减轻代码冗余，提高重用率，降低耦合度。
     private static final Logger logger = LoggerFactory.getLogger(AlphaInterceptor.class);
     // 在Controller之前执行
     @Override

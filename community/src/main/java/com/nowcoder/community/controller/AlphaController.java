@@ -163,6 +163,13 @@ public class AlphaController {
     //Cookie
     //是服务器发送到浏览器，并保存浏览器端的一小块数据
     //浏览器下次访问到该服务器时，会自动携带块该数据，将其发送给服务器
+    // 3.2.3 cookie的缺点
+    //优点:
+    //①弥补http无状态的缺点，让业务得以延续
+    //②使用简单
+    //缺点:
+    //①cookie存在客户端(浏览器)， 不安全，不能存密码等隐私数据
+    //②cookie会主动发送给服务器，对流量和性能产生影响
     @RequestMapping(path = "/cookie/get",method = RequestMethod.GET)
     @ResponseBody
     public String getCookie(@CookieValue("code") String code){
@@ -174,6 +181,11 @@ public class AlphaController {
     //session
     //是javaee的标椎，用于在服务端记录客户端信息
     //数据存放在服务端更加安全，但是也会增加服务端的内存压力
+    //Session本质上依赖Cookie。在服务端记录客户端信息。安全，但服务器内存压力大
+    //1.黏性session。固定ip发给同个服务器。但是很难保证负载均衡
+    //2.同步session。每个服务器创建seesion后同步给其他所有服务器。对服务器性能产生影响，服务器产生耦合，不独立。
+    //3.共享session。单独一台服务器，专门处理session。但是是单体服务器，万一他挂了，都挂了。
+    //4.尽量存cookie，敏感数据存入数据库。但是问题是传统关系型数据库是数据存入硬盘中，不是在内存，并发量大时产生瓶颈。
     @RequestMapping(path = "/session/set",method = RequestMethod.GET)
     @ResponseBody
     public String setSession(HttpSession session){
