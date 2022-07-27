@@ -11,7 +11,6 @@ import java.lang.annotation.Target;
  * 通过添加注解，自定义注解。
  *
  * 元注解：
- *
  * @Target：自定义的注解可以声明在哪些地方
  * @Retention：保留时间或有效时间
  * @Document：生成文档时是否加入文档
