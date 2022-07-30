@@ -17,4 +17,6 @@ public interface DiscussPostMapper {
     //增加插入帖子数据方法
     int insertDiscussPost(DiscussPost discussPost);
 
+    DiscussPost selectDiscussPostById(int id);
+
 }
