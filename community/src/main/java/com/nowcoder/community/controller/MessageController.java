@@ -7,6 +7,8 @@ import com.nowcoder.community.service.MessageService;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +35,8 @@ import java.util.*;
 
 @Controller
 public class MessageController {
+
+    private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
 
     @Autowired
     private MessageService messageService;
@@ -163,6 +167,14 @@ public class MessageController {
         message.setCreateTime(new Date());
         messageService.addMessage(message);
 
+        return CommunityUtil.getJSONString(0);
+    }
+
+    //删除私信
+    @RequestMapping(path = "/letter/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public String deleteLetter(int id){
+        messageService.deleteMessage(id);
         return CommunityUtil.getJSONString(0);
     }
 
